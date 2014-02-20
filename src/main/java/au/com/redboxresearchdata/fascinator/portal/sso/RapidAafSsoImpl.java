@@ -147,11 +147,22 @@ public class RapidAafSsoImpl implements SSOInterface {
 			String realName = jwt_json.getString(username, attrParentField, "displayname");
 			user = new RapidAafUser(realName);
 			// set the attributes...
-			user.setUsername(username);
-			String jti = jwt_json.getString("", "jti");
-			user.set("jti", jti);
+			user.setUsername(username);			
+			user.set("jti", jwt_json.getString("", "jti"));
 			user.set("exp", jwt_exp.toString());
-			user.set("jwt", (String) session.get("jwt"));
+			List<String> userFieldNames = ssoConfig.getStringList("userFields");
+			for (String userFieldName : userFieldNames) {
+				String fieldVal = jwt_json.getString(null,  attrParentField, userFieldName);
+				if (fieldVal != null) {
+					logger.debug("Setting '"+userFieldName+"' with value: " + fieldVal);
+					user.set(userFieldName, fieldVal);					
+				} else {
+					logger.debug("Skipping setting of " + userFieldName + ", null value.");
+				}
+			}
+			
+			// commented out saving since HibernateUserAttribute value column is too short for it.
+			//user.set("jwt", (String) session.get("jwt"));
 			user.setSource(source);
 			// put the user on the session
 			session.put("jwt_user", user);

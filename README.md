@@ -48,6 +48,7 @@ Then, further on the same file, under "build"->"plugins"->"maven-dependency-plug
 	    	"iss":"https://rapid.test.aaf.edu.au",
 	    	"attrParentField":"https://aaf.edu.au/attributes",
 	    	"usernameField":"edupersontargetedid",
+	    	"userFields":["cn", "mail", "displayname", "givenname", "surname", "edupersontargetedid", "edupersonscopedaffiliation", "edupersonprincipalname"],
 	    	"source":"rapidAafSso"    	
 	 },
 	 
