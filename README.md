@@ -72,7 +72,7 @@ Finally, tell the Internal Roles plugin the default role, like so:
         }
     },
 
-Please note that this plugin is not dependent on the Internal Roles plugin. Whichever plugin you may select, you will need to configure it to assign a default role whenever user does not have one assigned.
+Please note that this plugin is not dependent on the Internal Roles plugin. Whichever plugin you select, you will need to configure it to assign a default role whenever an AAF user does not have one assigned.
 
 That's it folks!
 
