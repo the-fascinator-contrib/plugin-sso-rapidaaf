@@ -54,7 +54,7 @@ Then, further on the same file, under "build"->"plugins"->"maven-dependency-plug
 	 
 You will need to replace the "url" and "sharedKey" values specific to your institution, and are specified during service registration. See AAF Rapid Connect documentation for details. 
 
-Please note that when registering a service, make sure to specify the "<YourBaseUrl>/auth/jwt.script" in the "Callback URL" field. Also, the "aud" config value must match the "URL" field value entered during registration.  
+Please note that when registering a service, make sure to specify the "Your-Base-Url/auth/jwt.script" in the "Callback URL" field. Also, the "aud" config value must match the "URL" field value entered during registration.  
 
 Optionally, you might also want to modify the "iss" field to reflect the appropriate environment. 
 
