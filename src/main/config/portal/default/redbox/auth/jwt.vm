@@ -1,0 +1,13 @@
+<html>
+	<head>
+		<title>Rapid AAF Logon Failure</title>
+		<script>
+			function showMessage() {
+				window.alert("Unfortunately, your RapidAAF Logon attempt failed. Please contact the site administrator.");
+				window.location.href = "${urlBase}${portalId}" ;
+			}
+		</script>
+	</head>	
+<body onLoad="showMessage()">
+</body>
+</html>
