@@ -134,7 +134,11 @@ public class RapidAafSsoImpl implements SSOInterface {
 			if (jwt_json == null || jwt_exp == null) {
 				logger.error("Session does not have jwt_json or jwt_exp, might be expired.");
 				return null;					
-			}					
+			}			
+			if (now > jwt_exp.longValue()) {
+				logger.error("Session has expired, exp: " + jwt_exp + ", now:" + now);
+				return null;
+			}		
 			String username = jwt_json.getString(null, attrParentField, usernameField);
 			if (username == null) {
 				logger.error("JWT has no username attribute: "+attrParentField + "->" + usernameField);
@@ -162,14 +166,7 @@ public class RapidAafSsoImpl implements SSOInterface {
 			user.setSource(source);
 			// put the user on the session
 			session.put("jwt_user", user);
-		} else {
-			Integer jwt_exp = Integer.parseInt(user.get("exp"));
-			if (now > jwt_exp.longValue()) {
-				logger.error("Session has expired jwt_exp value, exp: " + jwt_exp + ", now:" + now);
-				logout(session);
-				return null;
-			}
-		}
+		} 
 		return user;
 	}
 
