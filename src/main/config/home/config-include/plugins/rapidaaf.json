@@ -3,8 +3,8 @@
         "plugins": ["rapidAafSso"]
     },
 	"rapidAafSso": {
-    	"url":"https://rapid.test.aaf.edu.au/jwt/authnrequest/research/uwtBBCG25IhsTAsY",
-    	"sharedKey":"wdX!{jKSJDw=NqSe-4]HdC<l~|Diu1:8",
+    	"url":"",
+    	"sharedKey":"",
     	"aud":"${server.url.base}",
     	"iss":"https://rapid.test.aaf.edu.au",
     	"attrParentField":"https://aaf.edu.au/attributes",
