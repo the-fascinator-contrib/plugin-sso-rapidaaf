@@ -1,0 +1,15 @@
+{
+	"sso": {
+        "plugins": ["rapidAafSso"]
+    },
+	"rapidAafSso": {
+    	"url":"https://rapid.test.aaf.edu.au/jwt/authnrequest/research/uwtBBCG25IhsTAsY",
+    	"sharedKey":"wdX!{jKSJDw=NqSe-4]HdC<l~|Diu1:8",
+    	"aud":"${server.url.base}",
+    	"iss":"https://rapid.test.aaf.edu.au",
+    	"attrParentField":"https://aaf.edu.au/attributes",
+    	"usernameField":"edupersontargetedid",
+    	"userFields":["cn", "mail", "displayname", "givenname", "surname", "edupersontargetedid", "edupersonscopedaffiliation", "edupersonprincipalname"],
+    	"source":"rapidAafSso"    	
+    }
+}
