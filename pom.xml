@@ -98,4 +98,9 @@
 			<url>http://dev.redboxresearchdata.com.au/nexus/content/repositories/releases/</url>
 		</repository>
 	</distributionManagement>
+	<scm>
+    	<url>https://github.com/the-fascinator-contrib/plugin-sso-rapidaaf</url>
+    	<developerConnection>scm:git:https://github.com/the-fascinator-contrib/plugin-sso-rapidaaf.git</developerConnection>
+    	<tag>HEAD</tag>
+  	</scm>
 </project>
