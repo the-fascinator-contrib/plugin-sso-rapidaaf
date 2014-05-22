@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>au.com.redboxresearchdata.fascinator</groupId>
   <artifactId>plugin-sso-rapidaaf</artifactId>
-  <version>1.0</version>
+  <version>1.1-SNAPSHOT</version>
   <parent>
     <artifactId>organisation</artifactId>
     <groupId>com.googlecode.the-fascinator</groupId>
