@@ -1,0 +1,19 @@
+sudo: required
+language: java
+services:
+- docker
+before_install:
+- mkdir /tmp/build
+- docker pull qcifengineering/redbox-builder
+- docker run -v /tmp/build:/build -e "CLONEPATH=https://github.com/the-fascinator-contrib/plugin-sso-rapidaaf.git"
+  qcifengineering/redbox-builder
+install: true
+script: true
+after_success:
+- docker run -v /tmp/build:/build -e "SONATYPE_USERNAME=$SONATYPE_USERNAME" -e "SONATYPE_PASSWORD=$SONATYPE_PASSWORD"
+  qcifengineering/redbox-builder /bin/bash -c "cd build/src;mvn --settings /m2_repo/travis-settings.xml
+  -Dmaven.repo.local=/m2_repo -DskipTests=true deploy"
+env:
+  global:
+  - secure: aGrjZPo2olrZ4A4qtVO+699CUg13zJ7JYdaaYJyRSZwC5Q+LdIZGr3t8FONDmFnjPlXCKb3Zsy+Ca8yYM/IkpF2STArA6oExxsJ+QG6B3ilhru1NaRGdG+RKBLwQpbvX1GrQoVD05LlVRXn1xr1+igABwdlNw5j0qcTb8q77XjxwUgWL78npcAT4oZVcqO3xjme/CZqwzJD3qEVR8iuoT9+24wSt4bepjacxjpPWeyBQz6yhe0u+Conwd6p9XDbMqWKWSGV6LE6rwwABBBnxdXS9DwPx6dcwL3g4239z/KAHZv0fl9YgSc39sFWvDp8cU3B7C5aN993FWGA1E4eYAz4nEb5Jno9WfLle+jgVUM9HK0RJjVHLsBYFIK37trWU60vEcihhPSPdFcCdeZFaF6vCP1fC81x4u9LuOoabkZb1mY1VjyqzHtHr9v+JeKaTEOL4Rd/hhek7DVPYGzUYAgkMAjiMIJp/apit9EwFoc82TFpSfvICFcQO2wfwekVm3yRcDIgQPX/p1FEVUfIzIRh1M8ra+XKrmgruq2fqSjfbw4oUygJSXQc/C80LkxsPqhgn5QMJr4WpL4Gxt92z/+yoFhvSW7sz33Ratb1x3QjzGxDaU+tW5SzkikVs27B+0VUwa51Dhl70NH/zdtbL6U4hIpaLmjuFY0H0EkpCGfM=
+  - secure: cG3xKgCR/2gIoaAOiYoeHjOUpIxi5Hcc5gQ2zkVo/6R1pGfDcIDxwofiZbUBx5Z7FSdEy98EL6oiiNoDmW6oQhTu6JI2jHdXxYR2vVNQwdgN/DhByZZcmjcE/uLZoPb/46XkdQySvZd4rJnbJ4nLNByGcH+vM+xaT3URhl+sWo/ZJzg7xjk6Hc910+qbCxDfMaFJ34gMcl7u819Fnx9fMxAKEXK+S1nRz8ciN/kWhX1E17IYB8JddeshMa5680nmWckeeBgo7YGqIhiNsqW7cqpgeHEua9+prLhwXnox+RaSHyqQG1SMUHxwN7rUhUXgOlu1CuAad6WZpptI+HoH7NdiwC2odfdKtnapEUiq/g+1eTcVu2p2QpUSiLydEjGnVtvN1Qd4Ut9rdxMYmWBuCMJ7Y8srIb/z44SWclo1bp8xEz2IqoNmUUtHUYYBcUcFh5qj9Gweqwo5VrX1hE7Ar5y8nvQdXJ1ZSUDkOTJAyeWiu9H/O8Jjk199IfAFL6YI3YbJAwkwCnXOCcutucPFB1uHBjVSQLrD3Y/7vaa62N8gqqBNBMJMJSPCt24ySQ9yNzg4BgBtHziKQF9YqqtcjdLakqncDLd0U6z6131xvLGCC4oYOKzw9s1sHgLtJ/8PqR6NR3mwVDTYGZK1Wo6MJEBAmTw0dHl8Przz05L4Xvg=
